@@ -7,7 +7,6 @@ const descricao = ref("")
 async function carregar_tarefas() {
   const resposta = await fetch("http://localhost:8000/api/tarefa")
   const novasTarefas = await resposta.json()
-
   tarefas.value = novasTarefas
 }
 
@@ -44,10 +43,9 @@ carregar_tarefas()
       <div class="row">
         <div class="col-1">
           <input type="checkbox" v-model="tarefa.concluido" @change="concluido(tarefa)" />
-          <!-- <label for="checkbox"><i class="fa fa-check" aria-hidden="true"></i></label> -->
         </div>
         <div class="tarefa col-5">
-          <div id="task">{{ tarefa.descricao }}</div>
+          {{ tarefa.descricao }}
         </div>
         <div class="data col-5">
           {{ tarefa.dtCriacao }}
@@ -115,22 +113,5 @@ button:hover{
   font-family: georgia;
   font-weight: bolder;
 }
-
-/* input[type="checkbox"] {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-
-input[type="checkbox"] + label {
-  position: relative;
-  cursor: pointer;
-  padding-left: 100px;
-  color: rgb(236, 42, 74);
-} */
-
-/* .teste{
-  text-decoration: line-through;
-} */
 
 </style>

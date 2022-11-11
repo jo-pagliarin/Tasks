@@ -63,7 +63,6 @@ def completar_tarefa(id: int):
     cursor.execute("""--sql
     UPDATE tarefas
     SET concluido = 1
-    SET descricao = "teste"
     WHERE id = (?);
     """, [id])
     conn.commit()
