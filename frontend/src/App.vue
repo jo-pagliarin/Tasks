@@ -19,6 +19,7 @@ async function criar() {
     await fetch(`http://localhost:8000/api/tarefa?descricao=${descricaoFormatada}`, { method: "POST" })
     await carregar_tarefas()
   }
+  descricao.value = ""
 }
 
 async function concluido(tarefa) {
@@ -45,7 +46,9 @@ carregar_tarefas()
           <input type="checkbox" v-model="tarefa.concluido" @change="concluido(tarefa)" />
         </div>
         <div class="tarefa col-5">
-          {{ tarefa.descricao }}
+          <s v-if="tarefa.concluido">{{ tarefa.descricao }}</s>
+          <p v-else>{{ tarefa.descricao }}</p>
+          
         </div>
         <div class="data col-5">
           {{ tarefa.dtCriacao }}
